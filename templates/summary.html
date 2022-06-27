@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Summary</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<body>
+<nav class="navbar navbar-dark bg-dark justify-content-end">
+        <ul class="nav nav-pills pe-2">
+          <li class="nav-item pe-2">
+            <a class="nav-link active" href="/">Admin</a>
+          </li>
+          <li class="nav-item pe-2">
+            <a class="nav-link active" href="/student">Student</a>
+          </li>
+            </li>
+            <li class="nav-item pe-2">
+                <a class="nav-link active" href="/video">Today's Attendance</a>
+          </li>
+            <li class="nav-item ">
+            <a class="nav-link active" href="/automsg">Send Message</a>
+          </li>
+        </ul>
+    </nav>
+
+<div class="container">
+        <div class="col-8 card card-body mx-auto">
+                <form action="{{url_for('summary')}}" method="POST" enctype="multipart/form-data" class="row" >
+
+                    <h5 style="color:red">{{outputStr}}</h5>
+
+                    <div class="col-8">
+                         <input type="text" class="form-control" placeholder="Roll.No" name="roll">
+                    </div>
+                    <div class="col-4">
+                         <button  type="submit" class="btn btn-primary">Analyse & Generate Report</button>
+                    </div>
+
+                </form>
+
+
+
+<!--    <div class="container col-6 card card-body gap-3" >-->
+<!--        <form action="{{url_for('summary')}}" method="POST" enctype="multipart/form-data" class="row g-3">-->
+<!--            <h5>{{outputStr}}</h5>-->
+<!--            <div class="col-6">-->
+<!--                <input type="text" class="form-control" placeholder="Roll.No" name="roll">-->
+<!--            </div>-->
+
+<!--&lt;!&ndash;            <div class="col-5">&ndash;&gt;-->
+<!--&lt;!&ndash;                <select class="form-select" aria-label="Default select example">&ndash;&gt;-->
+<!--&lt;!&ndash;                      <option>year</option>&ndash;&gt;-->
+<!--&lt;!&ndash;                      <option value="2000">2000</option>&ndash;&gt;-->
+<!--&lt;!&ndash;                      <option value="2001">2001</option>&ndash;&gt;-->
+<!--&lt;!&ndash;                      <option value="2002">2002</option>&ndash;&gt;-->
+<!--&lt;!&ndash;                      <option value="2003">2003</option>&ndash;&gt;-->
+<!--&lt;!&ndash;                      <option value="2004">2004</option>&ndash;&gt;-->
+<!--&lt;!&ndash;                      <option value="2005">2005</option>&ndash;&gt;-->
+<!--&lt;!&ndash;                      <option value="2006">2006</option>&ndash;&gt;-->
+<!--&lt;!&ndash;                      <option value="2007">2007</option>&ndash;&gt;-->
+<!--&lt;!&ndash;                      <option value="2008">2008</option>&ndash;&gt;-->
+<!--&lt;!&ndash;                      <option value="2009">2009</option>&ndash;&gt;-->
+<!--&lt;!&ndash;                      <option value="2010">2010</option>&ndash;&gt;-->
+<!--&lt;!&ndash;                      <option value="2011">2011</option>&ndash;&gt;-->
+<!--&lt;!&ndash;                      <option value="2012">2012</option>&ndash;&gt;-->
+<!--&lt;!&ndash;                      <option value="2013">2013</option>&ndash;&gt;-->
+<!--&lt;!&ndash;                      <option value="2014">2014</option>&ndash;&gt;-->
+<!--&lt;!&ndash;                      <option value="2015">2015</option>&ndash;&gt;-->
+<!--&lt;!&ndash;                      <option value="2016">2016</option>&ndash;&gt;-->
+<!--&lt;!&ndash;                      <option value="2017">2017</option>&ndash;&gt;-->
+<!--&lt;!&ndash;                      <option value="2018">2018</option>&ndash;&gt;-->
+<!--&lt;!&ndash;                      <option value="2019">2019</option>&ndash;&gt;-->
+<!--&lt;!&ndash;                      <option value="2020">2020</option>&ndash;&gt;-->
+<!--&lt;!&ndash;                      <option value="2021">2021</option>&ndash;&gt;-->
+<!--&lt;!&ndash;                      <option selected value="2022">2022</option>&ndash;&gt;-->
+
+<!--&lt;!&ndash;            </select>&ndash;&gt;-->
+<!--&lt;!&ndash;            </div>&ndash;&gt;-->
+
+<!--            <div class="col-2">-->
+<!--                <button type="submit" class="btn btn-primary">Analyse</button>-->
+<!--            </div>-->
+<!--        </form>-->
+
+        <div class="row mt-4">
+            <div class="col-4">
+            <img src="{{img}}" class="img-thumbnail" alt="...">
+        </div>
+
+        <div class="col-8">
+            <div class="row gap-4">
+                <div class="col-12"><b>Name:{{detail[0]}}</b></div>
+                <div class="col-12"><b>Roll.No:{{detail[1]}}</b></div>
+                <div class="col-12"><b>No.of Days Present:{{detail[2]}}</b></div>
+                <div class="col-12"><b>No.of Days Absent:{{detail[3]}}</b></div>
+            </div>
+        </div>
+        </div>
+
+    </div>
+
+    <div class="container mt-2 ">
+        <div class="row">
+            <div class="col-6  mb-4">
+                <div class="card">
+                     <img src="data:image/png;base64,{{data[0]}}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">{{roll}}</h5>
+                     </div>
+                </div>
+
+            </div>
+
+            <div class="col-6  mb-4">
+                <div class="card">
+                     <img src="data:image/png;base64,{{data[1]}}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">{{roll}}</h5>
+                     </div>
+                </div>
+
+            </div>
+
+
+
+            </div>
+
+        </div>
+
+    <div id="carouselExampleCaptions" class=" col-8 mx-auto carousel slide carousel-dark" data-bs-ride="carousel">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3" aria-label="Slide 4"></button>
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="4" aria-label="Slide 5"></button>
+  </div>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+       <div class="card">
+                     <img src="data:image/png;base64,{{data[2][0]}}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">{{roll}}</h5>
+                     </div>
+                </div>
+    </div>
+    <div class="carousel-item">
+       <div class="card">
+                     <img src="data:image/png;base64,{{data[2][1]}}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">{{roll}}</h5>
+                     </div>
+                </div>
+    </div>
+      <div class="carousel-item">
+       <div class="card">
+                     <img src="data:image/png;base64,{{data[2][2]}}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">{{roll}}</h5>
+                     </div>
+                </div>
+    </div>
+      <div class="carousel-item">
+       <div class="card">
+                     <img src="data:image/png;base64,{{data[2][3]}}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">{{roll}}</h5>
+                     </div>
+                </div>
+    </div>
+    <div class="carousel-item">
+      <div class="card">
+                     <img src="data:image/png;base64,{{data[2][4]}}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">{{roll}}</h5>
+                     </div>
+                </div>
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+
+</div>
+
+
+
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+</html>

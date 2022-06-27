@@ -1,0 +1,64 @@
+<!--//templates/layout.html-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Python Flask Student Create, read, update and delete (CRUD) using PostgreSQL psycopg2 and dataTables bootstrap</title>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
+</head>
+<body>
+    <nav class="navbar navbar-dark bg-dark justify-content-end">
+        <ul class="nav nav-pills">
+          <li class="nav-item pr-2">
+            <a class="nav-link active" href="/">Admin</a>
+          </li>
+          <li class="nav-item pr-2">
+            <a class="nav-link active" href="/student">Student</a>
+          </li>
+            <li class="nav-item pr-2">
+                <a class="nav-link active" href="/video">Today's Attendance</a>
+          </li>
+            <li class="nav-item ">
+            <a class="nav-link active" href="/automsg">Send Message</a>
+          </li>
+        </ul>
+    </nav>
+
+    <div class="container pt-4">
+      {% block body %}
+      {% endblock %}
+    </div>
+
+<script>
+const btnDelete= document.querySelectorAll('.btn-delete');
+if(btnDelete) {
+  const btnArray = Array.from(btnDelete);
+  btnArray.forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+      if(!confirm('Are you sure you want to delete it?')){
+        e.preventDefault();
+      }
+    });
+  })
+}
+
+$(document).ready(function() {
+    $('#example').DataTable({
+      "aLengthMenu": [[3, 5, 10, 25, -1], [3, 5, 10, 25, "All"]],
+        "iDisplayLength": 3
+       }
+    );
+} );
+
+</script>
+
+<!--<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>-->
+<!--<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
+</html>

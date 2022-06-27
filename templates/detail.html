@@ -1,0 +1,24 @@
+{%extends "video.html" %}
+{%block content%}
+<div class="row gap-3 mt-4 card-body">
+        <div class="col-12"><b>Roll.No:</b>{{att_detail["roll"]}}</div>
+        <div class="col-12"><b>Name:</b>{{att_detail["name"]}}</div>
+         <div class="col-12"><b>Department:</b>{{att_detail["dept"]}}</div>
+        <div class="col-12"><b>Period:</b>{{att_detail["period"]}}</div>
+        <div class="col-12"><b>Time:</b>{{att_detail["time"]}}</div>
+        <div class="col-12"><b>Date:</b>{{att_detail["date"]}}</div>
+
+{% if att_detail["marked"] %}
+    <div class="col-12 alert alert-success alert-dismissible fade show" role="alert">
+         <strong>Attendance Marked Successfully!</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {% else %}
+    <div class="col-12 alert alert-danger alert-dismissible fade show" role="alert">
+         <strong>Ensure your face is properly detected!-Attendance unsuccessfull</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+{% endif %}
+
+</div>
+{%endblock%}
