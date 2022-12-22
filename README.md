@@ -1,4 +1,4 @@
-# Real-Time Attendance System using Face Recognition adhered with message Automation supported by postgreSQL in python(web app)
+# Attendance System using Face Recognition adhered with message Automation supported by postgreSQL in python(web app)
 
 
    This project solves the problem of manual attendance marking. This replaces the traditional way of attendance system i.e paper and pen method and leverages the current technology to solve the problem in more intuitive way using python.
